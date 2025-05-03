@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Usługi Wod-Kan Wrocław | UBIS</title>
+    <title>EnergiaInstal | Eligiusz Myszakowski | Świdnica</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
-    --primary-color: #0275d8; /* Modern blue */
-    --primary-light: #2196F3;
-    --primary-dark: #01579B;
-    --secondary-color: #292E36; /* Almost black with a touch of blue */
-    --accent-color: #36AE7C; /* Fresh green */
-    --accent-dark: #2E8B57;
-    --light-color: #FFFFFF;
-    --off-white: #F6F9FC;
-    --text-color: #333333;
-    --light-gray: #EEF2F6;
-    --gray: #CFD8DC;
+    --primary-color: #1e88e5; /* Blue */
+    --primary-dark: #1565c0;
+    --primary-light: #bbdefb;
+    --secondary-color: #263238; /* Dark blue-gray */
+    --accent-color: #ff9800; /* Orange */
+    --light-color: #ffffff;
+    --dark-color: #212121;
+    --text-color: #424242;
+    --light-gray: #f5f5f5;
+    --medium-gray: #e0e0e0;
+    --gray: #bdbdbd;
     --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -42,17 +42,13 @@ body {
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--light-color);
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto', sans-serif;
     min-height: 100vh;
     touch-action: manipulation;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4, .btn, .counter-value {
     font-family: 'Poppins', sans-serif;
-    letter-spacing: 0.5px;
-}
-
-h1, h2 {
     font-weight: 600;
 }
 
@@ -61,14 +57,17 @@ img {
     height: auto;
 }
 
-.btn, .nav-links a, .logo {
-    font-family: 'Poppins', sans-serif;
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
 }
 
 /* Navigation */
 nav {
-    background-color: rgba(41, 46, 54, 0.95);
-    padding: 1.2rem 2rem;
+    background-color: rgba(255, 255, 255, 0.98);
+    padding: 1rem;
     position: fixed;
     width: 100%;
     top: 0;
@@ -78,8 +77,8 @@ nav {
 }
 
 nav.scrolled {
-    padding: 0.8rem 2rem;
-    background-color: rgba(41, 46, 54, 0.98);
+    padding: 0.7rem 1rem;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
 .nav-content {
@@ -91,31 +90,40 @@ nav.scrolled {
 }
 
 .logo {
-    color: white;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     text-decoration: none;
     font-weight: 700;
     display: flex;
     align-items: center;
     gap: 0.5rem;
     transition: all 0.3s ease;
+    color: var(--secondary-color);
 }
 
 .logo span {
+    color: var(--primary-color);
+}
+
+.logo span.accent {
     color: var(--accent-color);
+}
+
+.logo img {
+    height: 45px;
+    width: auto;
 }
 
 .nav-links {
     display: flex;
-    gap: 1.8rem;
+    gap: 1.5rem;
 }
 
 .nav-links a {
-    color: white;
+    color: var(--secondary-color);
     text-decoration: none;
     transition: all 0.3s;
     font-weight: 500;
-    padding: 0.5rem 0.2rem;
+    padding: 0.5rem 0.8rem;
     position: relative;
     font-size: 1rem;
 }
@@ -127,12 +135,12 @@ nav.scrolled {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: var(--accent-color);
+    background-color: var(--primary-color);
     transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: var(--accent-color);
+    color: var(--primary-color);
 }
 
 .nav-links a:hover::after {
@@ -143,7 +151,7 @@ nav.scrolled {
     display: none;
     background: none;
     border: none;
-    color: white;
+    color: var(--secondary-color);
     font-size: 1.5rem;
     cursor: pointer;
     z-index: 1001;
@@ -153,87 +161,96 @@ nav.scrolled {
     padding: 5px;
 }
 
-/* Hero Section - Completely redesigned */
+/* Hero Section */
 .hero {
-    height: 100vh;
+    padding-top: 80px;
     position: relative;
-    background: linear-gradient(135deg, rgba(2, 117, 216, 0.85) 0%, rgba(2, 117, 216, 0.5) 100%), 
-                url('/api/placeholder/1920/1080');
-    background-size: cover;
-    background-position: center;
+    background: linear-gradient(135deg, rgba(30, 136, 229, 0.8) 0%, rgba(25, 118, 210, 0.9) 100%), 
+                url('/api/placeholder/1920/1080') center/cover no-repeat;
+    min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    color: white;
-    text-align: left;
     overflow: hidden;
+    color: white;
 }
 
 .hero-content {
-    max-width: 700px;
-    padding: 2rem;
-    margin-left: 10%;
+    max-width: 650px;
+    padding: 4rem 0;
     position: relative;
     z-index: 2;
-    width: 100%;
 }
 
-.hero-content h1 {
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    font-weight: 500;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+    animation: fadeInLeft 1s ease forwards;
+}
+
+.hero-title {
     font-size: 3.2rem;
     margin-bottom: 1.5rem;
     line-height: 1.2;
     font-weight: 700;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    position: relative;
-    padding-bottom: 15px;
+    color: white;
+    animation: fadeInLeft 1s ease 0.2s forwards;
 }
 
-.hero-content h1::after {
-    content: "";
-    position: absolute;
-    width: 80px;
-    height: 4px;
-    background-color: var(--accent-color);
-    bottom: 0;
-    left: 0;
-}
-
-.hero-content p {
-    font-size: 1.2rem;
+.hero-description {
+    font-size: 1.1rem;
     margin-bottom: 2.5rem;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    animation: fadeInLeft 1s ease 0.4s forwards;
+    color: rgba(255, 255, 255, 0.9);
     max-width: 90%;
-    font-weight: 300;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 1rem;
+    animation: fadeInLeft 1s ease 0.6s forwards;
+    flex-wrap: wrap;
+}
+
+.hero-image {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 45%;
+    max-width: 650px;
+    animation: fadeInRight 1s ease 0.4s forwards;
+    display: none; /* Initially hidden for small screens */
 }
 
 /* Buttons */
 .btn {
     display: inline-block;
-    padding: 0.8rem 2rem;
+    padding: 0.9rem 2rem;
     border-radius: 50px;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     transition: all 0.3s;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     border: none;
     position: relative;
     overflow: hidden;
     z-index: 1;
-    margin: 0.5rem 1rem 0.5rem 0;
-    font-size: 0.9rem;
+    text-align: center;
+    font-size: 1rem;
 }
 
 .btn-primary {
     background: var(--accent-color);
     color: white;
-    box-shadow: 0 4px 15px rgba(54, 174, 124, 0.4);
+    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
 }
 
 .btn-primary:hover {
-    background: var(--accent-dark);
+    background: #f57c00;
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(54, 174, 124, 0.5);
+    box-shadow: 0 8px 25px rgba(255, 152, 0, 0.4);
 }
 
 .btn-secondary {
@@ -244,185 +261,155 @@ nav.scrolled {
 
 .btn-secondary:hover {
     background: rgba(255, 255, 255, 0.1);
+    color: white;
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
 }
 
-/* Wave divider */
-.wave-divider {
-    height: 150px;
-    overflow: hidden;
+/* Features Section */
+.features {
+    padding: 6rem 0;
+    background-color: var(--light-gray);
     position: relative;
-    margin-top: -150px;
 }
 
-.wave-divider svg {
-    position: absolute;
-    width: 100%;
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.feature-card {
+    background: white;
+    border-radius: 10px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
     height: 100%;
-    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
-.wave-divider .wave1 {
-    fill: rgba(255, 255, 255, 0.7);
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
 }
 
-.wave-divider .wave2 {
-    fill: rgba(255, 255, 255, 0.5);
-    animation: wave 8s linear infinite;
+.feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--primary-color);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.5s ease;
 }
 
-.wave-divider .wave3 {
-    fill: rgba(255, 255, 255, 0.3);
-    animation: wave 10s linear infinite;
+.feature-card:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
 }
 
-@keyframes wave {
-    0% {
-        transform: translateX(0);
-    }
-    50% {
-        transform: translateX(-25%);
-    }
-    100% {
-        transform: translateX(-50%);
-    }
+.feature-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+    background: var(--primary-light);
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.feature-card:hover .feature-icon {
+    transform: rotateY(360deg);
+}
+
+.feature-title {
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+    font-size: 1.3rem;
+}
+
+.feature-text {
+    color: var(--text-color);
+    font-size: 0.95rem;
+    flex-grow: 1;
 }
 
 /* Sections */
 .section {
-    padding: 5rem 2rem;
+    padding: 6rem 0;
     overflow: hidden;
     position: relative;
     width: 100%;
 }
 
-.about {
-    background: var(--light-color);
-    position: relative;
-    padding: 6rem 2rem;
+.section-bg-light {
+    background-color: var(--light-gray);
 }
 
-.services {
-    background: var(--off-white);
-    padding: 6rem 2rem;
-    position: relative;
+.section-bg-white {
+    background-color: white;
 }
 
-.gallery {
-    background: var(--light-color);
-    padding: 6rem 2rem;
-}
-
-.testimonials {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
-    color: white;
-    padding: 6rem 2rem;
-}
-
-.faq-section {
-    background: var(--off-white);
-    padding: 6rem 2rem;
-}
-
-.contact {
-    background-size: cover;
-    background-color: var(--secondary-color);
-    background-position: center;
-    position: relative;
-    padding: 6rem 2rem;
-    color: white;
-}
-
-.contact::before {
-    display: none;
-}
-
-.contact .contact-container {
-    position: relative;
-}
-
-/* Section titles - Completely redesigned */
-.section-title {
-    color: var(--secondary-color);
-    font-size: 2.2rem;
-    margin-bottom: 3rem;
+/* Section titles */
+.section-header {
     text-align: center;
-    position: relative;
-    font-weight: 600;
-    padding: 0 10px;
-    display: inline-block;
-}
-
-.section-title-container {
-    text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
 }
 
 .section-subtitle {
-    color: var(--accent-color);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+    display: block;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.section-title {
+    color: var(--secondary-color);
+    font-size: 2.5rem;
+    margin-bottom: 1.2rem;
+    position: relative;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
 .section-title::after {
     content: "";
     position: absolute;
-    width: 60px;
-    height: 3px;
+    width: 70px;
+    height: 4px;
     background-color: var(--accent-color);
     bottom: -15px;
     left: 50%;
     transform: translateX(-50%);
 }
 
-.section-title.light {
-    color: var(--light-color);
-}
-
-.section-title.light::after {
-    background-color: var(--light-color);
-}
-
-.section-title-dark-bg {
-    color: white;
-    font-size: 2.2rem;
-    margin-bottom: 3rem;
-    text-align: center;
-    position: relative;
-    font-weight: 600;
-    padding: 0 10px;
-    display: inline-block;
-}
-
-.section-title-dark-bg::after {
-    content: "";
-    position: absolute;
-    width: 60px;
-    height: 3px;
-    background-color: var(--accent-color);
-    bottom: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.section-subtitle-dark-bg {
-    color: var(--accent-color);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+.section-description {
+    max-width: 700px;
+    margin: 2.5rem auto 0;
+    font-size: 1.1rem;
+    color: var(--text-color);
 }
 
 /* About Section */
-.about-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 10px;
+.about {
+    background: white;
+    position: relative;
+    padding: 7rem 0;
 }
 
 .about-grid {
@@ -432,299 +419,283 @@ nav.scrolled {
     align-items: center;
 }
 
+.about-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.about-content h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: var(--secondary-color);
+    line-height: 1.2;
+}
+
+.about-text {
+    margin-bottom: 2rem;
+}
+
 .about-text p {
     margin-bottom: 1.2rem;
-    font-size: 1.1rem;
-    line-height: 1.7;
+    font-size: 1rem;
+    line-height: 1.8;
 }
 
-.about-image img {
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-}
-
-.about-image img:hover {
-    transform: scale(1.02);
-}
-
-.features-list {
+.about-list {
     list-style: none;
     margin-top: 2rem;
 }
 
-.features-list li {
-    margin-bottom: 1.2rem;
+.about-list li {
+    margin-bottom: 1rem;
     display: flex;
     align-items: flex-start;
-    background: var(--light-gray);
-    padding: 1rem;
-    border-radius: 8px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.features-list li:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-}
-
-.features-list i {
+.about-list i {
     color: var(--accent-color);
-    margin-right: 15px;
+    margin-right: 10px;
     font-size: 1.2rem;
     min-width: 20px;
     margin-top: 5px;
 }
 
-/* Services - Redesigned Cards */
+.about-image {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.about-image::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(30,136,229,0.3), rgba(255,152,0,0.3));
+    z-index: 1;
+}
+
+.about-image img {
+    width: 100%;
+    display: block;
+    transition: transform 1s ease;
+}
+
+.about-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Services */
+.services {
+    background: var(--light-gray);
+    padding: 7rem 0;
+    position: relative;
+}
+
 .services-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 1rem 10px;
-    position: relative;
-    z-index: 1;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
 }
 
 .service-card {
     background: white;
     border-radius: 10px;
-    padding: 2.5rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
     transition: all 0.3s ease;
-    text-align: left;
     position: relative;
-    overflow: hidden;
-    border-bottom: 4px solid transparent;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .service-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-    border-bottom: 4px solid var(--accent-color);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
 }
 
 .service-icon {
-    font-size: 2.8rem;
+    font-size: 2.2rem;
     color: var(--primary-color);
     margin-bottom: 1.5rem;
     transition: all 0.3s ease;
-    background: var(--light-gray);
-    width: 80px;
-    height: 80px;
+    background: var(--primary-light);
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 .service-card:hover .service-icon {
-    background: var(--primary-color);
-    color: white;
-    transform: rotateY(180deg);
+    transform: rotateY(360deg);
 }
 
 .service-card h3 {
     margin-bottom: 1rem;
     color: var(--secondary-color);
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     position: relative;
-    display: inline-block;
-    padding-bottom: 10px;
 }
 
-.service-card h3::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 40px;
-    height: 2px;
-    background-color: var(--accent-color);
+.service-card p {
+    color: var(--text-color);
+    font-size: 0.95rem;
+    flex-grow: 1;
 }
 
-/* Gallery Grid - New Masonry Layout */
-.gallery-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 1rem 10px;
+.service-card .btn {
+    margin-top: 1.5rem;
+    align-self: flex-start;
 }
 
-.gallery-grid {
+/* Projects Section */
+.projects {
+    padding: 7rem 0;
+    background: white;
+}
+
+.projects-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-    margin-bottom: 40px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
 }
 
-.gallery-item {
-    position: relative;
+.project-card {
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    cursor: pointer;
-    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    height: 100%;
+    aspect-ratio: 3/4;
 }
 
-.gallery-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-}
-
-.gallery-item img {
+.project-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: all 0.5s ease;
+    transition: transform 0.5s ease;
 }
 
-.gallery-item:hover img {
+.project-card:hover .project-image {
     transform: scale(1.1);
 }
 
-.gallery-overlay {
+.project-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    top: 0;
-    background: linear-gradient(to top, rgba(2, 117, 216, 0.8), transparent);
-    display: flex;
-    align-items: flex-end;
-    padding: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 2rem;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
-.gallery-overlay h4 {
-    color: white;
-    font-size: 1.2rem;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-
-.gallery-item:hover .gallery-overlay {
+.project-card:hover .project-overlay {
     opacity: 1;
 }
 
-/* Counter Section */
-.counter-section {
-    background: linear-gradient(90deg, var(--accent-color) 0%, var(--primary-light) 100%);
+.project-title {
     color: white;
-    padding: 4rem 1rem;
-    position: relative;
-    z-index: 2;
-    border-radius: 15px;
-    max-width: 1200px;
-    margin: -3rem auto 0;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-}
-
-.counter-container {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
-    align-items: center;
-}
-
-.counter-item {
-    padding: 1rem;
-    text-align: center;
-    position: relative;
-    width: 100%;
-    max-width: 300px;
-}
-
-.counter-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.counter-value {
-    font-size: 3.5rem;
-    font-weight: 700;
+    font-size: 1.3rem;
     margin-bottom: 0.5rem;
-    line-height: 1;
-    font-family: 'Poppins', sans-serif;
 }
 
-.counter-title {
-    font-size: 1.1rem;
-    font-weight: 500;
-    opacity: 0.9;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+.project-category {
+    color: var(--accent-color);
+    font-size: 0.9rem;
 }
 
-/* Testimonials - New Design */
+/* Testimonials */
+.testimonials {
+    background: var(--light-gray);
+    padding: 7rem 0;
+}
+
 .testimonial-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 10px;
+    margin-top: 3rem;
 }
 
 .testimonial-card {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    background: white;
     border-radius: 10px;
     padding: 2.5rem;
-    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .testimonial-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
 }
 
-.testimonial-card::before {
-    content: "\201C";
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    font-size: 5rem;
-    color: rgba(255, 255, 255, 0.2);
-    font-family: Georgia, serif;
-    line-height: 1;
+.testimonial-rating {
+    color: #ffc107;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
 }
 
 .testimonial-text {
     font-style: italic;
-    margin-bottom: 1.5rem;
-    position: relative;
-    padding-top: 1rem;
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    line-height: 1.8;
+    flex-grow: 1;
 }
 
 .testimonial-author {
     display: flex;
     align-items: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    padding-top: 1rem;
+    gap: 1rem;
+    border-top: 1px solid var(--medium-gray);
+    padding-top: 1.5rem;
+}
+
+.author-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
 .author-info h4 {
     margin-bottom: 0.2rem;
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 1.1rem;
+    color: var(--secondary-color);
 }
 
 .author-info p {
-    color: rgba(255, 255, 255, 0.7);
+    color: #777;
     font-size: 0.9rem;
 }
 
-/* FAQ Section - New Accordion Style */
+/* FAQ Section */
+.faq {
+    padding: 7rem 0;
+    background: white;
+}
+
 .faq-container {
     max-width: 900px;
-    margin: 0 auto;
-    padding: 0 10px;
+    margin: 3rem auto 0;
 }
 
 .faq-item {
@@ -733,6 +704,11 @@ nav.scrolled {
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     background: white;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 .faq-question {
@@ -743,11 +719,8 @@ nav.scrolled {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: var(--secondary-color);
     transition: all 0.3s ease;
-}
-
-.faq-question:hover {
-    color: var(--primary-color);
 }
 
 .faq-question span {
@@ -757,24 +730,17 @@ nav.scrolled {
 
 .faq-question i {
     transition: transform 0.3s ease;
-    flex-shrink: 0;
-    color: var(--accent-color);
-    background: var(--light-gray);
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
+    color: var(--primary-color);
+    font-size: 1.2rem;
 }
 
 .faq-question.active {
-    color: var(--primary-color);
+    background-color: var(--primary-color);
+    color: white;
 }
 
 .faq-question.active i {
     transform: rotate(180deg);
-    background: var(--accent-color);
     color: white;
 }
 
@@ -783,7 +749,6 @@ nav.scrolled {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.5s ease, padding 0.5s ease;
-    background-color: var(--light-gray);
 }
 
 .faq-answer.show {
@@ -793,85 +758,212 @@ nav.scrolled {
 
 .faq-answer p {
     margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.8;
 }
 
 .faq-answer p:last-child {
     margin-bottom: 0;
 }
 
-/* Contact - New Design */
-.contact-container {
-    max-width: 1200px;
-    margin: 3rem auto 0;
+/* CTA Section */
+.cta-section {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+    padding: 7rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/api/placeholder/1920/1080');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.cta-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.cta-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.cta-text {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-white {
+    background: white;
+    color: var(--primary-color);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+.btn-white:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
+}
+
+.btn-outline {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+/* Contact */
+.contact {
+    background: var(--light-gray);
+    padding: 7rem 0;
+}
+
+.contact-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 3rem;
-    padding: 0 10px;
+    margin-top: 3rem;
 }
 
 .contact-info {
-    padding: 1.5rem;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.contact-card {
+    background: white;
     border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.contact-info p {
-    margin-bottom: 1.5rem;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
-    font-size: 1.1rem;
+    height: 100%;
 }
 
-.contact-info i {
-    margin-right: 1rem;
-    width: 20px;
-    color: var(--accent-color);
+.contact-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.contact-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    background: var(--primary-light);
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+.contact-card h3 {
     font-size: 1.3rem;
-    min-width: 20px;
-    margin-top: 5px;
+    margin-bottom: 1rem;
+    color: var(--secondary-color);
+}
+
+.contact-card p, .contact-card a {
+    color: var(--text-color);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.contact-card a:hover {
+    color: var(--primary-color);
 }
 
 .map-container {
     width: 100%;
     height: 100%;
-    min-height: 300px;
-    overflow: hidden;
+    min-height: 400px;
     border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 .map-container iframe {
     width: 100%;
-    height: 300px;
+    height: 400px;
     border: 0;
-    border-radius: 10px;
 }
 
-/* Footer - New Design */
+/* Footer */
 footer {
     background-color: var(--secondary-color);
     color: white;
-    padding: 4rem 2rem 1rem;
-    overflow: hidden;
+    padding: 5rem 0 1rem;
 }
 
 .footer-content {
-    max-width: 1400px;
-    margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;
     gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer-logo {
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    display: inline-block;
+}
+
+.footer-logo span {
+    color: var(--primary-color);
+}
+
+.footer-logo span.accent {
+    color: var(--accent-color);
+}
+
+.footer-about p {
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    opacity: 0.8;
+    max-width: 400px;
+    line-height: 1.8;
 }
 
 .footer-section h4 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     margin-bottom: 1.5rem;
+    color: white;
     position: relative;
-    padding-bottom: 0.5rem;
-    color: var(--accent-color);
-    font-weight: 600;
+    padding-bottom: 0.8rem;
 }
 
 .footer-section h4::after {
@@ -879,47 +971,79 @@ footer {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 40px;
+    width: 50px;
     height: 2px;
     background: var(--accent-color);
 }
 
-.footer-section p {
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: var(--accent-color);
+    transform: translateX(5px);
+}
+
+.footer-links a i {
+    margin-right: 8px;
+    font-size: 0.9rem;
+}
+
+.footer-contact p {
+    display: flex;
     margin-bottom: 1rem;
+    font-size: 0.95rem;
     opacity: 0.8;
 }
 
-.footer-bottom {
-    text-align: center;
-    padding-top: 2rem;
-    margin-top: 2rem;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    font-size: 0.9rem;
-    color: rgba(255,255,255,0.6);
+.footer-contact i {
+    margin-right: 1rem;
+    color: var(--accent-color);
 }
 
-/* Social Media Icons */
-.social-icons {
+.social-links {
     display: flex;
     gap: 1rem;
     margin-top: 1.5rem;
 }
 
-.social-icons a {
-    color: white;
+.social-links a {
     background: rgba(255, 255, 255, 0.1);
     width: 40px;
     height: 40px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
+    color: white;
+    font-size: 1.2rem;
     transition: all 0.3s ease;
 }
 
-.social-icons a:hover {
+.social-links a:hover {
     background: var(--accent-color);
     transform: translateY(-5px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9rem;
+    opacity: 0.7;
 }
 
 /* Scroll Top Button */
@@ -939,7 +1063,7 @@ footer {
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 3px 15px rgba(255, 152, 0, 0.4);
     z-index: 99;
 }
 
@@ -949,20 +1073,58 @@ footer {
 }
 
 .scroll-top:hover {
-    background-color: var(--accent-dark);
-    transform: translateY(-5px);
+    background-color: var(--primary-color);
+    transform: translateY(-3px);
 }
 
-.scroll-top i {
-    font-size: 1.2rem;
-}
-
-/* Mobile Navigation Styles */
-@media (max-width: 768px) {
-    body.nav-open {
-        overflow: hidden;
+/* Animations */
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
     }
-    
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
     .hamburger {
         display: block;
     }
@@ -973,479 +1135,589 @@ footer {
         right: -100%;
         width: 80%;
         height: 100vh;
-        background-color: var(--secondary-color);
+        background-color: white;
         padding: 6rem 2rem 2rem;
         flex-direction: column;
         text-align: left;
         transition: all 0.5s ease;
         z-index: 999;
-        overflow-y: auto;
+        box-shadow: -5px 0 30px rgba(0,0,0,0.1);
     }
     
     .nav-links.active {
         right: 0;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.2);
     }
     
     .nav-links a {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
         padding: 1rem 0.8rem;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
+        border-bottom: 1px solid var(--medium-gray);
         width: 100%;
         display: block;
     }
     
     .hamburger.active {
-        transform: rotate(90deg);
+        color: var(--primary-color);
     }
-}
 
-/* Animations */
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
+    .hero-content {
+        text-align: center;
+        padding: 3rem 0;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
+    .hero-title {
+        font-size: 2.5rem;
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
-/* Responsive */
-@media (min-width: 576px) {
-    .hero-content h1 {
-        font-size: 3.5rem;
+    .hero-description {
+        max-width: 100%;
     }
-    
-    .hero-content p {
-        font-size: 1.3rem;
+
+    .hero-cta {
+        justify-content: center;
     }
-    
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
+
+    .features-grid,
+    .services-grid,
+    .projects-grid,
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .cta-title {
+        font-size: 2rem;
     }
 }
 
 @media (min-width: 768px) {
-    nav {
-        padding: 1.2rem 2rem;
-    }
-    
-    nav.scrolled {
-        padding: 0.8rem 2rem;
-    }
-    
-    .section {
-        padding: 6rem 2rem;
-    }
-    
-    .contact-container {
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-    }
-    
-    .map-container iframe {
-        height: 350px;
-    }
-    
-    .hero-content h1 {
-        font-size: 3.8rem;
-    }
-    
     .footer-content {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
     }
-    
-    .counter-container {
-        flex-direction: row;
-        justify-content: space-around;
+
+    .contact-grid {
+        grid-template-columns: 1fr 1fr;
     }
-    
-    .counter-item {
-        flex: 1;
-        max-width: none;
+
+    .hero-image {
+        display: block;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr 1fr;
     }
 }
 
 @media (min-width: 992px) {
-    .hero-content {
-        margin-left: 15%;
+    .hero-title {
+        font-size: 3.5rem;
     }
-    
-    .about-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-    }
-    
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .gallery-grid {
+
+    .features-grid {
         grid-template-columns: repeat(3, 1fr);
     }
-    
-    .hero-content h1 {
-        font-size: 4rem;
+
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
-    
+
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
     .testimonial-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
-
-@media (min-width: 1200px) {
-    .services-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-</style>
+    </style>
 </head>
 <body>
-       <!-- Scroll to top button -->
-       <div class="scroll-top">
+    <!-- Scroll to top button -->
+    <div class="scroll-top">
         <i class="fas fa-arrow-up"></i>
     </div>
 
-    <nav>
+    <!-- Navigation -->
+    <nav id="navbar">
         <div class="nav-content">
-            <a href="#" class="logo">
-                UB<span>IS</span>
-            </a>
-            <button class="hamburger">
+            <a href="#" class="logo">Energia<span>Instal</span></a>
+            <button class="hamburger" id="menu-toggle">
                 <i class="fas fa-bars"></i>
             </button>
             <div class="nav-links">
-                <a href="#start">Start</a>
-                <a href="#about">O Nas</a>
+                <a href="#home">Start</a>
+                <a href="#about">O nas</a>
                 <a href="#services">Usługi</a>
-                <a href="#gallery">Realizacje</a>
-                <a href="#faq">FAQ</a>
+                <a href="#projects">Realizacje</a>
+                <a href="#testimonials">Opinie</a>
                 <a href="#contact">Kontakt</a>
             </div>
         </div>
     </nav>
 
-    <section id="start" class="hero">
-        <div class="hero-content">
-            <h1>Profesjonalne Usługi Wod-Kan</h1>
-            <p>Kompleksowe przyłącza wodociągowe i kanalizacyjne we Wrocławiu i okolicach. Niezawodnie dostarczamy rozwiązania dla Twojego domu i firmy.</p>
-            <div>
-                <a href="#contact" class="btn btn-primary">Skontaktuj się</a>
-                <a href="#services" class="btn btn-secondary">Nasze Usługi</a>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-subtitle">Profesjonalne Rozwiązania Instalacyjne</span>
+                <h1 class="hero-title">Nowoczesne instalacje dla Twojego domu</h1>
+                <p class="hero-description">Specjalizujemy się w instalacjach gazowych, hydraulicznych, grzewczych oraz w odnawialnych źródłach energii. Zapewniamy kompleksowe usługi dla klientów indywidualnych i firm.</p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn btn-primary">Kontakt</a>
+                    <a href="#services" class="btn btn-secondary">Nasze usługi</a>
+                </div>
+            </div>
+            <img src="/api/placeholder/600/500" alt="Instalacje energetyczne" class="hero-image">
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Dlaczego My?</span>
+                <h2 class="section-title">Nasze Atuty</h2>
+                <p class="section-description">EnergiaInstal oferuje kompleksowe usługi instalacyjne, stawiając na jakość, profesjonalizm i zadowolenie klienta.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3 class="feature-title">Doświadczenie</h3>
+                    <p class="feature-text">Wieloletnie doświadczenie w branży pozwala nam oferować usługi na najwyższym poziomie, gwarantując niezawodność i trwałość instalacji.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="feature-title">Ekologia</h3>
+                    <p class="feature-text">Stawiamy na ekologiczne i energooszczędne rozwiązania, które są przyjazne dla środowiska i pozwalają na znaczące oszczędności.</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3 class="feature-title">Kompleksowość</h3>
+                    <p class="feature-text">Oferujemy pełen zakres usług - od projektu, przez montaż, po serwis. Każdy projekt traktujemy indywidualnie, dopasowując się do potrzeb klienta.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <div class="wave-divider">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path class="wave1" d="M0,224L60,213.3C120,203,240,181,360,181.3C480,181,600,203,720,224C840,245,960,267,1080,261.3C1200,256,1320,224,1380,208L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
-            <path class="wave2" d="M0,256L60,240C120,224,240,192,360,192C480,192,600,224,720,229.3C840,235,960,213,1080,202.7C1200,192,1320,192,1380,192L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
-            <path class="wave3" d="M0,288L60,272C120,256,240,224,360,213.3C480,203,600,213,720,229.3C840,245,960,267,1080,266.7C1200,267,1320,245,1380,234.7L1440,224L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
-        </svg>
-    </div>
-
+    <!-- About Section -->
     <section id="about" class="about section">
-        <div class="about-container">
-            <div class="section-title-container" data-aos="fade-up">
-                <div class="section-subtitle">Kim Jesteśmy</div>
-                <h2 class="section-title">O Naszej Firmie</h2>
-            </div>
+        <div class="container">
             <div class="about-grid">
                 <div class="about-content" data-aos="fade-right">
+                    <h3>Poznaj naszą firmę</h3>
+                    <h2>Profesjonalny zespół specjalistów z wieloletnim doświadczeniem</h2>
                     <div class="about-text">
-                        <p>
-                            <strong>UBIS</strong> to firma z wieloletnim doświadczeniem, oferująca kompleksowe usługi w zakresie przyłączy wodociągowych i kanalizacyjnych, budowy szamb oraz przydomowych oczyszczalni ścieków na terenie Wrocławia i okolic.
-                        </p>
-                        <p>
-                            Nasze usługi kierujemy zarówno do klientów indywidualnych, jak i firm oraz instytucji. Gwarantujemy profesjonalne wykonanie, terminowość oraz konkurencyjne ceny. Każdy projekt traktujemy indywidualnie, dostosowując rozwiązania do potrzeb i wymagań klienta.
-                        </p>
-                        <ul class="features-list">
-                            <li data-aos="fade-up" data-aos-delay="100">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Darmowa wycena i konsultacja techniczna</span>
-                            </li>
-                            <li data-aos="fade-up" data-aos-delay="200">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Gwarancja na wszystkie wykonane prace</span>
-                            </li>
-                            <li data-aos="fade-up" data-aos-delay="300">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Pełna dokumentacja techniczna</span>
-                            </li>
-                            <li data-aos="fade-up" data-aos-delay="400">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Terminowość i rzetelność wykonania</span>
-                            </li>
-                        </ul>
+                        <p>EnergiaInstal to firma z wieloletnim doświadczeniem, specjalizująca się w kompleksowych usługach instalacyjnych. Naszym głównym celem jest dostarczanie najwyższej jakości rozwiązań, które są zarówno funkcjonalne jak i energooszczędne.</p>
+                        <p>Oferujemy pełen zakres usług związanych z instalacjami gazowymi, wodno-kanalizacyjnymi, grzewczymi oraz systemami wentylacji i rekuperacji. Działamy na terenie województwa dolnośląskiego, realizując projekty zarówno dla klientów indywidualnych jak i komercyjnych.</p>
                     </div>
+                    <ul class="about-list">
+                        <li data-aos="fade-up" data-aos-delay="100">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Bezpłatna wycena i konsultacja techniczna</span>
+                        </li>
+                        <li data-aos="fade-up" data-aos-delay="200">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Gwarancja na wszystkie wykonane prace</span>
+                        </li>
+                        <li data-aos="fade-up" data-aos-delay="300">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Terminowa realizacja i przejrzyste rozliczenia</span>
+                        </li>
+                        <li data-aos="fade-up" data-aos-delay="400">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Współpraca z najlepszymi producentami sprzętu</span>
+                        </li>
+                    </ul>
                 </div>
                 <div class="about-image" data-aos="fade-left">
-                    <img src="/api/placeholder/600/400" alt="Realizacja przyłącza" style="width: 100%;">
+                    <img src="/api/placeholder/600/800" alt="Zespół EnergiaInstal">
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="counter" class="counter-section">
-        <div class="counter-container">
-            <div class="counter-item" data-aos="fade-up" data-aos-delay="100">
-                <div class="counter-icon"><i class="fas fa-calendar-check"></i></div>
-                <div class="counter-value" data-target="21">0</div>
-                <div class="counter-title">Lat Doświadczenia</div>
-            </div>
-            <div class="counter-item" data-aos="fade-up" data-aos-delay="200">
-                <div class="counter-icon"><i class="fas fa-project-diagram"></i></div>
-                <div class="counter-value" data-target="300">0</div>
-                <div class="counter-title">Ukończonych Projektów</div>
-            </div>
-            <div class="counter-item" data-aos="fade-up" data-aos-delay="300">
-                <div class="counter-icon"><i class="fas fa-smile"></i></div>
-                <div class="counter-value" data-target="100">0</div>
-                <div class="counter-title">Zadowolonych Klientów (%)</div>
-            </div>
-        </div>
-    </section>
-
+    <!-- Services Section -->
     <section id="services" class="services section">
-        <div class="section-title-container" data-aos="fade-up">
-            <div class="section-subtitle">Co Oferujemy</div>
-            <h2 class="section-title">Nasze Usługi</h2>
-        </div>
-        <div class="services-grid">
-            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="service-icon">
-                    <i class="fas fa-faucet"></i>
-                </div>
-                <h3>Przyłącza wod-kan</h3>
-                <p>Kompleksowe wykonanie przyłączy wodociągowych i kanalizacyjnych do budynków mieszkalnych, komercyjnych i przemysłowych. Pomagamy w uzyskaniu niezbędnych pozwoleń i dokumentacji.</p>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Co Oferujemy</span>
+                <h2 class="section-title">Nasze Usługi</h2>
+                <p class="section-description">Oferujemy kompleksowe rozwiązania instalacyjne, dopasowane do indywidualnych potrzeb naszych klientów.</p>
             </div>
-            
-            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="service-icon">
-                    <i class="fas fa-water"></i>
-                </div>
-                <h3>Wykonanie szamb</h3>
-                <p>Projektowanie i budowa szamb betonowych i plastikowych o różnych pojemnościach. Dbamy o szczelność i trwałość instalacji, zapewniając bezpieczeństwo środowiska.</p>
-            </div>
-            
-            <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="service-icon">
-                    <i class="fas fa-recycle"></i>
-                </div>
-                <h3>Przydomowe oczyszczalnie</h3>
-                <p>Montaż nowoczesnych, ekologicznych przydomowych oczyszczalni ścieków. Oferujemy rozwiązania dostosowane do wielkości gospodarstwa i lokalnych warunków gruntowych.</p>
-            </div>
-            
-            <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-                <div class="service-icon">
-                    <i class="fas fa-tools"></i>
-                </div>
-                <h3>Inne usługi wod-kan</h3>
-                <p>Świadczymy również inne usługi z zakresu instalacji wodociągowych i kanalizacyjnych, w tym naprawy, modernizacje oraz konserwację istniejących systemów.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="gallery" class="gallery section">
-        <div class="section-title-container" data-aos="fade-up">
-            <div class="section-subtitle">Nasze Prace</div>
-            <h2 class="section-title">Realizacje</h2>
-        </div>
-        <div class="gallery-container">
-            <div class="gallery-grid">
-                <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
-                    <img src="/api/placeholder/400/500" alt="Realizacja 1">
-                    <div class="gallery-overlay">
-                        <h4>Przyłącze wodociągowe</h4>
+            <div class="services-grid">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-fire"></i>
                     </div>
+                    <h3>Usługi Gazowe</h3>
+                    <p>Kompleksowe wykonanie instalacji gazowych, przyłączy, przeróbki instalacji, próby szczelności oraz podłączanie urządzeń gazowych.</p>
+                    <a href="#contact" class="btn btn-primary">Szczegóły</a>
                 </div>
-                <div class="gallery-item" data-aos="fade-up" data-aos-delay="150">
-                    <img src="/api/placeholder/400/500" alt="Realizacja 2">
-                    <div class="gallery-overlay">
-                        <h4>Przyłącze kanalizacyjne</h4>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <i class="fas fa-sun"></i>
                     </div>
+                    <h3>Odnawialne Źródła Energii</h3>
+                    <p>Montaż systemów wykorzystujących odnawialne źródła energii - pompy ciepła, fotowoltaika, kolektory słoneczne i inne energooszczędne rozwiązania.</p>
+                    <a href="#contact" class="btn btn-primary">Szczegóły</a>
                 </div>
-                <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
-                    <img src="/api/placeholder/400/500" alt="Realizacja 3">
-                    <div class="gallery-overlay">
-                        <h4>Instalacja szamba</h4>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-tint"></i>
                     </div>
+                    <h3>Usługi Hydrauliczne</h3>
+                    <p>Montaż, naprawa i konserwacja instalacji hydraulicznych, wymiana urządzeń sanitarnych oraz usuwanie awarii hydraulicznych.</p>
+                    <a href="#contact" class="btn btn-primary">Szczegóły</a>
                 </div>
-                <div class="gallery-item" data-aos="fade-up" data-aos-delay="250">
-                    <img src="/api/placeholder/400/500" alt="Realizacja 4">
-                    <div class="gallery-overlay">
-                        <h4>Przydomowa oczyszczalnia</h4>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon">
+                        <i class="fas fa-water"></i>
                     </div>
+                    <h3>Instalatorstwo Wodno-Kanalizacyjne</h3>
+                    <p>Wykonanie kompleksowych instalacji wodno-kanalizacyjnych, przyłączy do budynków oraz montaż szamb i przydomowych oczyszczalni ścieków.</p>
+                    <a href="#contact" class="btn btn-primary">Szczegóły</a>
                 </div>
-                <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
-                    <img src="/api/placeholder/400/500" alt="Realizacja 5">
-                    <div class="gallery-overlay">
-                        <h4>Prace ziemne</h4>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="service-icon">
+                        <i class="fas fa-wind"></i>
                     </div>
+                    <h3>Montaż Wentylacji i Rekuperacji</h3>
+                    <p>Profesjonalny montaż systemów wentylacji i rekuperacji w domach, mieszkaniach i budynkach komercyjnych. Serwis istniejących instalacji.</p>
+                    <a href="#contact" class="btn btn-primary">Szczegóły</a>
                 </div>
-                <div class="gallery-item" data-aos="fade-up" data-aos-delay="350">
-                    <img src="/api/placeholder/400/500" alt="Realizacja 6">
-                    <div class="gallery-overlay">
-                        <h4>Naprawa instalacji</h4>
+                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="service-icon">
+                        <i class="fas fa-thermometer-half"></i>
                     </div>
+                    <h3>Instalatorstwo Grzewcze</h3>
+                    <p>Montaż, modernizacja i serwis systemów grzewczych - kotłownie, ogrzewanie podłogowe, grzejniki oraz systemy sterowania ogrzewaniem.</p>
+                    <a href="#contact" class="btn btn-primary">Szczegóły</a>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Projects Section -->
+    <section id="projects" class="projects section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Nasze Prace</span>
+                <h2 class="section-title">Wybrane Realizacje</h2>
+                <p class="section-description">Zapoznaj się z wybranymi projektami, które zrealizowaliśmy dla naszych klientów.</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <img src="/api/placeholder/400/600" alt="Instalacja gazowa" class="project-image">
+                    <div class="project-overlay">
+                        <h3 class="project-title">Instalacja gazowa w budynku</h3>
+                        <p class="project-category">Usługi Gazowe</p>
+                    </div>
+                </div>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <img src="/api/placeholder/400/600" alt="Pompa ciepła" class="project-image">
+                    <div class="project-overlay">
+                        <h3 class="project-title">Montaż pompy ciepła</h3>
+                        <p class="project-category">Odnawialne Źródła Energii</p>
+                    </div>
+                </div>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+                    <img src="/api/placeholder/400/600" alt="Instalacja hydrauliczna" class="project-image">
+                    <div class="project-overlay">
+                        <h3 class="project-title">Kompleksowa instalacja hydrauliczna</h3>
+                        <p class="project-category">Usługi Hydrauliczne</p>
+                    </div>
+                </div>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+                    <img src="/api/placeholder/400/600" alt="Instalacja wodno-kanalizacyjna" class="project-image">
+                    <div class="project-overlay">
+                        <h3 class="project-title">Przyłącze wodno-kanalizacyjne</h3>
+                        <p class="project-category">Instalatorstwo Wodno-Kanalizacyjne</p>
+                    </div>
+                </div>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="500">
+                    <img src="/api/placeholder/400/600" alt="System rekuperacji" class="project-image">
+                    <div class="project-overlay">
+                        <h3 class="project-title">System rekuperacji w domu jednorodzinnym</h3>
+                        <p class="project-category">Montaż Wentylacji i Rekuperacji</p>
+                    </div>
+                </div>
+                <div class="project-card" data-aos="fade-up" data-aos-delay="600">
+                    <img src="/api/placeholder/400/600" alt="Ogrzewanie podłogowe" class="project-image">
+                    <div class="project-overlay">
+                        <h3 class="project-title">Ogrzewanie podłogowe</h3>
+                        <p class="project-category">Instalatorstwo Grzewcze</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials section">
-        <div class="section-title-container" data-aos="fade-up">
-            <div class="section-subtitle">Opinie</div>
-            <h2 class="section-title light">Co Mówią Nasi Klienci</h2>
-        </div>
-        <div class="testimonial-grid">
-            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="testimonial-text">
-                    <p>Profesjonalna firma, szybka realizacja przyłącza wodociągowego. Pełen profesjonalizm i dobry kontakt. Zdecydowanie polecam usługi firmy UBIS!</p>
-                </div>
-                <div class="testimonial-author">
-                    <div class="author-info">
-                        <h4>Jan Kowalski</h4>
-                        <p>★★★★★</p>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Opinie Klientów</span>
+                <h2 class="section-title">Co Mówią O Nas</h2>
+                <p class="section-description">Poznaj opinie klientów, którzy skorzystali z naszych usług.</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Profesjonalna i terminowa realizacja instalacji grzewczej w naszym domu. Pełne zaangażowanie i doradztwo na każdym etapie. Polecam EnergiaInstal wszystkim, którzy szukają solidnej firmy z podejściem do klienta."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <h4>Adam Nowak</h4>
+                            <p>Świdnica</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="testimonial-text">
-                    <p>Wykonanie przydomowej oczyszczalni ścieków przebiegło sprawnie i zgodnie z ustaleniami. Doskonała jakość i terminowość wykonania. Polecam!</p>
-                </div>
-                <div class="testimonial-author">
-                    <div class="author-info">
-                        <h4>Anna Nowak</h4>
-                        <p>★★★★★</p>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Ekipa EnergiaInstal wykonała dla nas kompleksową instalację wodno-kanalizacyjną oraz przyłącze gazowe. Wszystko zostało zrobione zgodnie z projektem, szybko i bez dodatkowych kosztów. Bardzo polecam!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">M</div>
+                        <div class="author-info">
+                            <h4>Monika Kowalska</h4>
+                            <p>Wrocław</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="testimonial-text">
-                    <p>Bardzo dobry kontakt, fachowe doradztwo i solidne wykonanie przyłącza kanalizacyjnego. Zdecydowanie polecam usługi firmy UBIS!</p>
-                </div>
-                <div class="testimonial-author">
-                    <div class="author-info">
-                        <h4>Marek Wiśniewski</h4>
-                        <p>★★★★★</p>
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Zdecydowanie polecam firmę EnergiaInstal. Montaż pompy ciepła przebiegł bardzo sprawnie, a jakość wykonania na najwyższym poziomie. Do tego konkurencyjne ceny i pełne doradztwo w wyborze odpowiedniego rozwiązania."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">J</div>
+                        <div class="author-info">
+                            <h4>Jan Wiśniewski</h4>
+                            <p>Dzierżoniów</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="faq" class="faq-section section">
-        <div class="section-title-container" data-aos="fade-up">
-            <div class="section-subtitle">Pytania</div>
-            <h2 class="section-title">Najczęściej Zadawane Pytania</h2>
-        </div>
-        <div class="faq-container">
-            <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
-                <div class="faq-question">
-                    <span>Jaka jest różnica między szambem a przydomową oczyszczalnią ścieków?</span>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    <p>Szambo to szczelny zbiornik, który gromadzi ścieki i wymaga regularnego opróżniania przez specjalistyczną firmę. Przydomowa oczyszczalnia ścieków natomiast to system, który oczyszcza ścieki na miejscu, dzięki czemu oczyszczona woda może być odprowadzana do gruntu.</p>
-                    <p>Oczyszczalnia jest rozwiązaniem bardziej ekologicznym i w dłuższej perspektywie tańszym w eksploatacji, ponieważ nie wymaga regularnego opróżniania. Szambo jest z kolei prostsze w montażu i tańsze w początkowej inwestycji.</p>
-                </div>
+    <!-- FAQ Section -->
+    <section id="faq" class="faq section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Pytania i Odpowiedzi</span>
+                <h2 class="section-title">Najczęściej Zadawane Pytania</h2>
+                <p class="section-description">Znajdź odpowiedzi na najczęściej zadawane pytania dotyczące naszych usług.</p>
             </div>
-            
-            <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
-                <div class="faq-question">
-                    <span>Ile czasu zajmuje wykonanie przyłącza wod-kan?</span>
-                    <i class="fas fa-chevron-down"></i>
+            <div class="faq-container">
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="faq-question">
+                        <span>Jak długo trwa montaż pompy ciepła w domu jednorodzinnym?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Czas montażu pompy ciepła w domu jednorodzinnym jest uzależniony od wielu czynników, takich jak typ pompy, wielkość budynku oraz stopień skomplikowania instalacji. Standardowo montaż trwa od 3 do 5 dni roboczych.</p>
+                        <p>W przypadku budynków już zamieszkałych, staramy się zminimalizować niedogodności związane z pracami montażowymi, wykonując większość prac w godzinach dogodnych dla mieszkańców.</p>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Czas wykonania przyłącza wodociągowego i kanalizacyjnego zależy od wielu czynników, takich jak długość przyłącza, warunki gruntowe oraz konieczność uzyskania odpowiednich pozwoleń. Sama fizyczna realizacja przyłącza zajmuje zazwyczaj od 1 do 3 dni roboczych.</p>
-                    <p>Należy jednak pamiętać, że przed przystąpieniem do prac konieczne jest uzyskanie odpowiednich pozwoleń i dokumentacji, co może zająć kilka tygodni. Nasza firma pomaga klientom w przejściu przez cały proces, od uzyskania dokumentacji po wykonanie i odbiór przyłącza.</p>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="faq-question">
+                        <span>Jakie są zalety rekuperacji w domu?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Rekuperacja to system, który zapewnia kontrolowaną wymianę powietrza w budynku, odzyskując przy tym ciepło z powietrza wywiewanego. Główne zalety to:</p>
+                        <p>- Znaczne oszczędności na ogrzewaniu (nawet do 30%)</p>
+                        <p>- Stały dopływ świeżego powietrza przy zamkniętych oknach</p>
+                        <p>- Usuwanie zanieczyszczeń i alergenów z powietrza</p>
+                        <p>- Zapobieganie powstawaniu wilgoci i pleśni</p>
+                        <p>- Zwiększenie komfortu mieszkania przez cały rok</p>
+                    </div>
                 </div>
-            </div>
-            
-            <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
-                <div class="faq-question">
-                    <span>Czy potrzebuję pozwolenia na budowę przydomowej oczyszczalni ścieków?</span>
-                    <i class="fas fa-chevron-down"></i>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="faq-question">
+                        <span>Czy oferujecie serwis gwarancyjny i pogwarancyjny?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Tak, oferujemy pełen serwis gwarancyjny i pogwarancyjny na wszystkie wykonane przez nas instalacje. Standardowo udzielamy 2-letniej gwarancji na wykonane prace, a na urządzenia obowiązuje gwarancja producenta (zazwyczaj od 2 do 5 lat).</p>
+                        <p>W ramach serwisu wykonujemy regularne przeglądy, konserwację oraz naprawy w przypadku awarii. Oferujemy również możliwość podpisania umowy serwisowej, która zapewnia priorytetowe traktowanie zgłoszeń oraz preferencyjne stawki za wykonywane usługi.</p>
+                    </div>
                 </div>
-                <div class="faq-answer">
-                    <p>Budowa przydomowej oczyszczalni ścieków o przepustowości do 7,5 m³ na dobę nie wymaga pozwolenia na budowę, ale konieczne jest zgłoszenie takiej inwestycji w odpowiednim wydziale starostwa powiatowego. W przypadku większych instalacji może być wymagane pozwolenie na budowę oraz pozwolenie wodnoprawne.</p>
-                    <p>Nasza firma pomaga klientom w przygotowaniu niezbędnej dokumentacji technicznej oraz w dopełnieniu wszystkich formalności związanych ze zgłoszeniem lub uzyskaniem pozwoleń. Zapewniamy kompleksową obsługę, dzięki czemu cały proces przebiega sprawnie i bez zbędnych komplikacji.</p>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="faq-question">
+                        <span>Czy pomagacie w uzyskaniu dotacji na instalacje ekologiczne?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Tak, oferujemy kompleksowe wsparcie w procesie uzyskania dofinansowania na montaż ekologicznych instalacji, takich jak pompy ciepła czy systemy fotowoltaiczne. Pomagamy w przygotowaniu niezbędnej dokumentacji, wypełnieniu wniosków oraz doborze rozwiązań, które kwalifikują się do aktualnych programów dofinansowań.</p>
+                        <p>Aktualnie dostępnych jest kilka programów wsparcia, m.in. "Czyste Powietrze", "Moje Ciepło" oraz ulga termomodernizacyjna. Wysokość dofinansowania zależy od wielu czynników, dlatego zachęcamy do kontaktu w celu uzyskania szczegółowych informacji dostosowanych do Państwa sytuacji.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Gotowy na nowoczesne rozwiązania?</h2>
+                <p class="cta-text">Skontaktuj się z nami już dziś, aby umówić się na bezpłatną konsultację i wycenę. Nasi specjaliści pomogą Ci wybrać najlepsze rozwiązanie dopasowane do Twoich potrzeb i budżetu.</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-white">Skontaktuj się</a>
+                    <a href="#services" class="btn btn-outline">Nasze usługi</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
     <section id="contact" class="contact section">
-        <div class="section-title-container" data-aos="fade-up">
-            <div class="section-subtitle-dark-bg">Skontaktuj Się</div>
-            <h2 class="section-title-dark-bg">Kontakt</h2>
-        </div>
-        <div class="contact-container">
-            <div class="contact-info" data-aos="fade-right">
-                <p><i class="fas fa-user"></i> Sławomir Ślusarczyk</p>
-                <p><i class="fas fa-phone"></i> +48 512 121 303</p>
-                <p><i class="fas fa-envelope"></i> biuro.ubis@gmail.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> Nyska 56b, 50-505 Wrocław</p>
-                <p><i class="fas fa-clock"></i> Godziny pracy: Pon-Pt: 8:00-17:00, Sob: 9:00-13:00</p>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Zostańmy w kontakcie</span>
+                <h2 class="section-title">Skontaktuj się z nami</h2>
+                <p class="section-description">Jesteśmy dostępni, aby odpowiedzieć na wszystkie Twoje pytania i zapewnić profesjonalną pomoc.</p>
             </div>
-            <div class="map-container" data-aos="fade-left">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2506.1275083147927!2d16.977750776941937!3d51.08593417170304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470fc25632ff9659%3A0xd40c5dbc99c895f4!2sNyska%2056B%2C%2050-505%20Wroc%C5%82aw!5e0!3m2!1spl!2spl!4v1682535846963!5m2!1spl!2spl" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Adres</h3>
+                        <p>ul. Strzelińska 31</p>
+                        <p>58-100 Świdnica</p>
+                        <p>woj. dolnośląskie</p>
+                    </div>
+                    <div class="contact-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3>Telefon</h3>
+                        <a href="tel:+48534388771">+48 534 388 771</a>
+                    </div>
+                    <div class="contact-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email</h3>
+                        <a href="mailto:Energia.instal1@gmail.com">Energia.instal1@gmail.com</a>
+                    </div>
+                    <div class="contact-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Godziny pracy</h3>
+                        <p>Poniedziałek - Piątek: 7:00 - 20:00</p>
+                        <p>Sobota: 9:00 - 17:00</p>
+                        <p>Niedziela: Zamknięte</p>
+                    </div>
+                </div>
+                <div class="map-container" data-aos="fade-up">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2518.696918902917!2d16.47809977636355!3d50.84005557164173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470e50e80bd66259%3A0xaec6bc3e1cdff0e!2sStrzeli%C5%84ska%2031%2C%2058-100%20%C5%9Awidnica!5e0!3m2!1spl!2spl!4v1682342000825!5m2!1spl!2spl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>UBIS</h4>
-                <p>Profesjonalne usługi wod-kan dla domu i firmy. Oferujemy kompleksowe rozwiązania w zakresie przyłączy wodociągowych i kanalizacyjnych, budowy szamb oraz przydomowych oczyszczalni ścieków.</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <a href="#" class="footer-logo">Energia<span>Instal</span></a>
+                    <p>Specjalizujemy się w kompleksowych usługach instalacyjnych z naciskiem na energooszczędne rozwiązania. Działamy na terenie województwa dolnośląskiego, zapewniając najwyższą jakość wykonania.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Usługi</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Usługi gazowe</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Odnawialne źródła energii</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Usługi hydrauliczne</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Instalatorstwo wodno-kanalizacyjne</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Montaż wentylacji i rekuperacji</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Instalatorstwo grzewcze</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Szybki dostęp</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Start</a></li>
+                        <li><a href="#about"><i class="fas fa-chevron-right"></i> O nas</a></li>
+                        <li><a href="#projects"><i class="fas fa-chevron-right"></i> Realizacje</a></li>
+                        <li><a href="#testimonials"><i class="fas fa-chevron-right"></i> Opinie</a></li>
+                        <li><a href="#faq"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontakt</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> ul. Strzelińska 31, 58-100 Świdnica</p>
+                    <p><i class="fas fa-phone-alt"></i> +48 534 388 771</p>
+                    <p><i class="fas fa-envelope"></i> Energia.instal1@gmail.com</p>
+                </div>
             </div>
-            <div class="footer-section">
-                <h4>Usługi</h4>
-                <p>Przyłącza wod-kan do budynków</p>
-                <p>Wykonanie szamb</p>
-                <p>Przydomowe oczyszczalnie ścieków</p>
-                <p>Inne usługi wod-kan</p>
+            <div class="footer-bottom">
+                &copy; <span id="current-year"></span> EnergiaInstal Eligiusz Myszakowski | Wszystkie prawa zastrzeżone
             </div>
-            <div class="footer-section">
-                <h4>Kontakt</h4>
-                <p><i class="fas fa-phone"></i> +48 512 121 303</p>
-                <p><i class="fas fa-envelope"></i> biuro.ubis@gmail.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> Nyska 56b, 50-505 Wrocław</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            &copy; 2025 UBIS | Wszystkie prawa zastrzeżone
         </div>
     </footer>
 
+    <!-- JavaScript Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <!-- Main JavaScript -->
     <script>
-       // Wait for the DOM to be fully loaded
+            
+// Wait for the DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize AOS (Animate on Scroll)
     AOS.init({
         duration: 800,
-        easing: 'ease-out',
+        easing: 'ease',
         once: true,
-        offset: 120,
-        delay: 100
+        offset: 100
     });
+
+    // Set current year in footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
 
     // Navigation scroll effect
     window.addEventListener('scroll', function() {
@@ -1464,12 +1736,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile Navigation Toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
-    const body = document.querySelector('body');
     
     hamburger.addEventListener('click', function() {
         hamburger.classList.toggle('active');
         navLinks.classList.toggle('active');
-        body.classList.toggle('nav-open');
+        document.body.classList.toggle('nav-open');
     });
     
     // Close mobile menu when clicking on a link
@@ -1477,11 +1748,11 @@ document.addEventListener('DOMContentLoaded', function() {
         link.addEventListener('click', function() {
             hamburger.classList.remove('active');
             navLinks.classList.remove('active');
-            body.classList.remove('nav-open');
+            document.body.classList.remove('nav-open');
         });
     });
     
-    // Smooth scrolling for anchor links with offset for fixed header
+    // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -1491,143 +1762,77 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
-                // Calculate header height dynamically
-                const headerHeight = document.querySelector('nav').offsetHeight;
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-                
                 window.scrollTo({
-                    top: targetPosition - headerHeight - 20, // Extra 20px padding
+                    top: targetElement.offsetTop - 80,
                     behavior: 'smooth'
                 });
             }
         });
     });
     
-    // Scroll to top button with smooth animation
-    const scrollTopBtn = document.querySelector('.scroll-top');
-    if (scrollTopBtn) {
-        scrollTopBtn.addEventListener('click', function() {
-            // Smooth scroll with animation
-            const scrollToTop = () => {
-                const c = document.documentElement.scrollTop || document.body.scrollTop;
-                if (c > 0) {
-                    window.requestAnimationFrame(scrollToTop);
-                    window.scrollTo(0, c - c / 8);
-                }
-            };
-            scrollToTop();
+    // Scroll to top button
+    document.querySelector('.scroll-top').addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
         });
-    }
+    });
     
-    // Counter animation with improved easing
-    const counterSection = document.querySelector('.counter-section');
-    if (counterSection) {
-        const counters = document.querySelectorAll('.counter-value');
-        let counterStarted = false;
-        
-        function startCounter() {
-            if (isInViewport(counterSection) && !counterStarted) {
-                counterStarted = true;
-                
-                counters.forEach(counter => {
-                    const target = parseInt(counter.getAttribute('data-target'));
-                    const duration = 2500; // 2.5 seconds
-                    
-                    let startTime = null;
-                    
-                    function updateCounter(timestamp) {
-                        if (!startTime) startTime = timestamp;
-                        
-                        const elapsed = timestamp - startTime;
-                        const progress = Math.min(elapsed / duration, 1);
-                        
-                        // Easing function for smooth counter animation (easeOutExpo)
-                        const easedProgress = progress === 1 
-                            ? 1 
-                            : 1 - Math.pow(2, -10 * progress);
-                        
-                        const currentValue = Math.round(easedProgress * target);
-                        counter.textContent = currentValue;
-                        
-                        if (progress < 1) {
-                            window.requestAnimationFrame(updateCounter);
-                        } else {
-                            counter.textContent = target; // Ensure final value is exact
-                        }
-                    }
-                    
-                    window.requestAnimationFrame(updateCounter);
-                });
-            }
-        }
-        
-        // Check if counter section is in viewport on scroll
-        window.addEventListener('scroll', startCounter);
-        // Also check on page load
-        window.addEventListener('load', startCounter);
-    }
-    
-    // FAQ Accordion with smooth animation
+    // FAQ Accordion
     const faqQuestions = document.querySelectorAll('.faq-question');
     
     faqQuestions.forEach(question => {
         question.addEventListener('click', function() {
-            const currentlyActive = document.querySelector('.faq-question.active');
+            // Close all other answers
+            faqQuestions.forEach(q => {
+                if (q !== question) {
+                    q.classList.remove('active');
+                    q.nextElementSibling.classList.remove('show');
+                }
+            });
             
-            // If there's an active item that's not the clicked one, close it first
-            if (currentlyActive && currentlyActive !== this) {
-                currentlyActive.classList.remove('active');
-                currentlyActive.nextElementSibling.classList.remove('show');
-            }
-            
-            // Toggle the clicked item
+            // Toggle current answer
             this.classList.toggle('active');
             const answer = this.nextElementSibling;
             answer.classList.toggle('show');
         });
     });
     
-    // Helper function to check if element is in viewport with threshold
-    function isInViewport(element, threshold = 0.2) {
+    // Helper function to check if element is in viewport
+    function isInViewport(element) {
         const rect = element.getBoundingClientRect();
-        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
-        
-        // Element is considered in viewport if it's top edge has passed threshold% into view,
-        // or its bottom edge is still within the viewport
         return (
-            rect.top <= windowHeight * (1 - threshold) &&
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
             rect.bottom >= 0
         );
     }
-    
-    // Add active class to navigation based on scroll position
-    function highlightNavOnScroll() {
-        // Get all sections that have an ID defined
-        const sections = document.querySelectorAll('section[id]');
+
+    // Add scroll event for animations
+    window.addEventListener('scroll', function() {
+        // Add more custom scroll-based animations here if needed
+    });
+
+    // Add smooth hover effect for service cards
+    const serviceCards = document.querySelectorAll('.service-card');
+    serviceCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transition = 'all 0.3s ease';
+        });
         
-        // Get current scroll position
-        const scrollY = window.pageYOffset;
-        
-        // Loop through sections to get height, top and ID values for each
-        sections.forEach(section => {
-            const sectionHeight = section.offsetHeight;
-            const sectionTop = section.offsetTop - 100; // Adjust offset as needed
-            const sectionId = section.getAttribute('id');
-            
-            // If our current scroll position enters the space where section is
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                document.querySelector('.nav-links a[href*=' + sectionId + ']').classList.add('active');
-            } else {
-                document.querySelector('.nav-links a[href*=' + sectionId + ']').classList.remove('active');
-            }
+        card.addEventListener('mouseleave', function() {
+            this.style.transition = 'all 0.5s ease';
+        });
+    });
+
+    // Add parallax effect to CTA section
+    const ctaSection = document.querySelector('.cta-section');
+    if (ctaSection) {
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+            const offset = scrollPosition * 0.4;
+            ctaSection.style.backgroundPosition = `center ${offset}px`;
         });
     }
-    
-    // Call the function on scroll
-    window.addEventListener('scroll', highlightNavOnScroll);
-    
-    // Initialize the function on page load
-    highlightNavOnScroll();
 });
     </script>
 </body>
